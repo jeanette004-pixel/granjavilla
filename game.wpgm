@@ -15,4 +15,9 @@ program farmville {
  	
  	//  COMIENZA
 	game.start()
+	//teclas
+	keyboard.m().OnPressDo({hector.sembrarSemilla(new Maiz())})
+		keyboard.t().OnPressDo({hector.sembrarSemilla(new Trigo())})
+		keyboard.o().OnPressDo({hector.sembrarSemilla(new Tomaco())})
+		keyboard.r().OnPressDo({hector.regarPlanta(game.uniqueCollider(self))})
 }

@@ -1,47 +1,70 @@
 import wollok.game.*
-/*
+import personaje.*
+
 class Maiz {
 	var property image="corn_baby.png"
-	method position() {
-		// TODO: hacer que aparezca donde lo plante Hector
-		return game.at(1, 1)
-	}
+	var property position
 	method teRegaron(){
-		if(self.image()=="corn_baby.png"){
-			self.image("corn_adult.png")
-		}
+			image="corn_adult.png"
 	}
+	 
+	method teCosecharon(){
+		if(self.esAdulto()){
+		   game.removeVisual(self)
+		   hector.añadirACosechados(self)
+	    }
+	}
+	method esAdulto(){
+		return image=="corn_adult.png"
+	}
+	
 }
 
 class Trigo {
 	var evolucion=0
 	var property image="wheat_0.png"
-	method position() {
-		// TODO: hacer que aparezca donde lo plante Hector
-		return game.at(1, 1)
-	}
+	var property position
+
 	method teRegaron(){	
-		if(evolucion<4){
+		if(evolucion<2){
 			evolucion=evolucion+1
-			self.image("wheat"+evolucion.toString()+"png")
+			self.image("wheat_"+evolucion.toString()+".png")
 		}else{
-			self.image("wheat_4.png")
+			self.image("wheat_0.png")
+			evolucion=0
 		}
+	}
+	method teCosecharon(){
+		if(evolucion>=2){
+		   game.removeVisual(self)
+		   hector.añadirACosechados(self)
+	    }
 	}
 }
 
 class Tomaco {
-	var property position=game.at(1,1)
+	var property position
 	method image() {
 		// TODO: hacer que devuelva la imagen que corresponde
 		return "tomaco.png"
 	}
 	method teRegaron(){
 		if(not self.estaEnElBorde()){
-			self.position().up()
+			position=position.up(1)
 		}else{
 			self.irAbajoDeTodo()
 		}
 	}
+
+	method estaEnElBorde(){
+		return position.y()==game.height()-1 ||position.x()==game.width()-1
+	}
+
+	method irAbajoDeTodo(){
+		position=game.at(position.x(),0)
+	}
+	method teCosecharon(){
+		game.removeVisual(self)
+		hector.añadirACosechados(self)
+	}
 }
-*/

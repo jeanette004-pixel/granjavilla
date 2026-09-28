@@ -8,10 +8,9 @@ program farmville {
 	game.height(10)
 	game.width(10)
 	game.ground("ground.png")
-
+	hector.movimientos()
 	//  VISUALES
- 	game.addVisualCharacter(personaje)
- 	game.addVisual(new Maiz()) // Se agrega a modo de prueba
+ 	game.addVisualCharacter(hector)
  	
  	//  COMIENZA
 	game.start()

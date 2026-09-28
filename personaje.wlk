@@ -1,19 +1,22 @@
 import wollok.game.*
-/*
-object personaje {
-	var property position = game.center()
-	const property image = "fplayer.png"
+import cultivos.*
 
-	method movimientos{
-		keyboard.m().OnPressDo({self.sembrarSemilla(maiz)})
-		keyboard.t().OnPressDo({self.sembrarSemilla(trigo)})
-		keyboard.o().OnPressDo({self.sembrarSemilla(tomaco)})
-		keyboard.r().OnPressDo({self.regarPlanta(game.uniqueCollider(self))})
-		
+object hector{
+	var property position = game.origin()
+	const property image = "fplayer.png"
+	var cosechados=[]
+
+	method movimientos(){
+		keyboard.m().onPressDo({self.sembrarSemilla(new Maiz(position=self.position()))})
+		keyboard.t().onPressDo({self.sembrarSemilla(new Trigo(position=self.position()))})
+		keyboard.o().onPressDo({self.sembrarSemilla(new Tomaco(position=self.position()))})
+		keyboard.r().onPressDo({self.regarPlanta(game.uniqueCollider(self))})
+		keyboard.c().onPressDo({self.cosechar(game.uniqueCollider(self))})
+	
 	}
 
 	method sembrarSemilla(planta_){
-
+		game.addVisual(planta_)
 	}
 
 	method regarPlanta(planta_){
@@ -22,9 +25,15 @@ object personaje {
 	}
 
 	method validarSiHayPlanta(){
-		if(not self.hayPlanta()){
-			game.error("no hay planta")
+		if(game.colliders(self).isEmpty()){
+			self.error("no hay planta")
 		}
 	}
+	method cosechar(planta_){
+		planta_.teCosecharon()
+	}
+
+	method añadirACosechados(planta_){
+		cosechados.add(planta_)
+	}
 }
-*/

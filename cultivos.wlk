@@ -17,6 +17,9 @@ class Maiz {
 	method esAdulto(){
 		return image=="corn_adult.png"
 	}
+	method precio(){
+		return 150
+	}
 	
 }
 
@@ -40,6 +43,10 @@ class Trigo {
 		   hector.añadirACosechados(self)
 	    }
 	}
+	method precio(){
+		return (evolucion-1)*100
+	}
+
 }
 
 class Tomaco {
@@ -66,5 +73,9 @@ class Tomaco {
 	method teCosecharon(){
 		game.removeVisual(self)
 		hector.añadirACosechados(self)
+	}
+
+	method precio(){
+		return 80
 	}
 }
